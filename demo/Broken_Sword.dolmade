@@ -1,0 +1,42 @@
+# Name of the dolmade (very restricted by udocker)
+DOLMADE
+    Broken_Sword
+
+# Docker image to use as a base
+BASE
+    dolmades/winestable
+
+# Ingredients: sha256 / file name / display name / URL #1 / URL #2 / ...
+INGREDIENT
+    110026b9c1f4eaa0ed4f7dfc59519a4df8e1a3eff4616b10b59da4ba04abe4ed
+    bs25setup.zip
+    Broken Sword 2.5 Setup
+    http://bf25.digital-extremes.com/bs25setup.zip
+    http://server.c-otto.de/baphometsfluch/bs25setup.zip
+    file:///home/stefan/Downloads/bs25setup.zip
+
+INGREDIENT
+    84934b495a5847244b9be221d96cff12212c72704afdfefff843892b3ae608d4
+    BS25_patch000_multilingual.zip
+    Broken Sword 2.5 MultiLingual Patch
+    http://baphometsfluch25.de/downloads/sonstiges/BS25_patch000_multilingual.zip
+    file:///home/stefan/Downloads/BS25_patch000_multilingual.zip
+
+# Run a command inside the dolmade
+# PWD is the install folder
+RUNUSER
+    unzip -o bs25setup.zip &&
+    wine bs25-setup.exe &&
+    cd "`dirname "$(find /wineprefix/ -name bsengine.exe)"`" && 
+    unzip -o /install/BS25_patch000_multilingual.zip
+
+RUNUSER
+    unzip -o dvd-cover.zip DVD_Label/English/label_bs25.jpg
+
+# Set icon for the Desktop shortcut
+ICON
+    DVD_Label/English/label_bs25.jpg
+
+# Comment out the following two lines to fall back to the target selector
+SETTARGET
+    echo "$(find /wineprefix/ -name bsengine.exe)"

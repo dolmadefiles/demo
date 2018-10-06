@@ -19,18 +19,23 @@ RUNUSER
     mkdir -p drakensang &&
     cd drakensang &&
     7z -y x ../Drakensang_SilverEdition.iso &&
-    echo "NOW INSTALL JUST DRAKENSANG AND THEN CLOSE THE INSTALLER..."
-    wine StartUp.exe &&
+    echo "NOW INSTALL JUST DRAKENSANG AND THEN CLOSE THE INSTALLER..." &&
+    wine StartUp.exe && 
+    echo "WAITING UNTIL DONE..." && 
+    wineserver -w && 
     cd .. &&
     rm -rf drakensang
 
 RUNUSER
-    winetricks d3dx9 xact &&
-    cp /wineprefix/drive_c/Program Files/Drakensang/game.ico /install
+    winetricks directx9 && 
+    winetricks --force xact
+
+RUNUSER
+    cp "/wineprefix/drive_c/Program Files/Drakensang/game.ico" /install
 
 # Set icon for the Desktop shortcut
 ICON
     game.ico
 
 SETTARGET
-    echo "$(find /wineprefix/ -name drakensang.exe) -novideo"
+    echo "$(find /wineprefix/ -name drakensang.exe)"

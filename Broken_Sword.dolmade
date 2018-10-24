@@ -6,6 +6,9 @@ DOLMADE
 BASE
     dolmades/winestable
 
+VERSION
+    1.0
+
 # Ingredients: sha256 / file name / display name / URL #1 / URL #2 / ...
 INGREDIENT
     110026b9c1f4eaa0ed4f7dfc59519a4df8e1a3eff4616b10b59da4ba04abe4ed

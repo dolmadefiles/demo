@@ -32,7 +32,7 @@ RUNUSER
 
 # Set icon for the Desktop shortcut
 ICON
-    Screenshot-assembly.png
+    /LifeForce/Screenshot-assembly.png
 
 # Comment out the following two lines to fall back to the target selector
 SETTARGET

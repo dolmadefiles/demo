@@ -1,0 +1,39 @@
+# Name of the dolmade (very restricted by udocker)
+DOLMADE
+    AdobeConnect_Browser
+
+# The version of `cook` that must be used for this dolmade
+VERSION
+    1.0
+
+# Docker image to use as a base with VERSION defining its tag
+BASE
+    dolmades/winestable
+
+# A description of the installed software
+DESCRIPTION
+    Firefox 51 with Flash support for AdobeConnect
+    
+# Chrome v70 64Bit installer
+INGREDIENT
+    fd262449e908a26f648628c20cd89662387403d2a0d9fff658e5cdc51efc920c
+    AdobeConnect.png
+    Adobe Connect Icon
+    https://eic.fiu.edu/wp-content/uploads/2018/08/adobe-connect-264x300.jpg
+
+# Run a command inside the dolmade
+# PWD is the install folder
+RUNUSER
+    winetricks -q flash &&
+    winetricks -q firefox &&
+    wineserver -w
+
+# Set icon for the Desktop shortcut
+ICON
+    AdobeConnect.png
+
+SETTARGET
+    echo "$(find /wineprefix/ -name firefox.exe)"
+
+SETTARGETARGS
+    https://webconf.vc.dfn.de/
